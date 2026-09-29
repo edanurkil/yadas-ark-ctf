@@ -14,7 +14,7 @@ cipher_bytes = repeating_xor(FLAG, SECRET_KEY)
 with open("enc_coords.hex", "w") as f:
     f.write(cipher_bytes.hex())
 
-# 2. Oyuncuya verilecek kısmen bozuk/ipuçlu Python kaynak kodu
+# 2. Oyuncuya verilecek ipuçlu Python kaynak kodu
 leaked_code = '''# [YADA'S ARK - ONBOARD CRYPTO SUB-ROUTINE v3.4]
 # SYSTEM RECOVERY SCRIPT
 import sys

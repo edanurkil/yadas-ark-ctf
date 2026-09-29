@@ -1,16 +1,17 @@
+version: '3.8'
+
 services:
   ctfd:
-    image: ctfd/ctfd:latest
-    user: root
+    image: ctfd/ctfd:3.7.5
     restart: always
     ports:
       - "8000:8000"
     environment:
-      - SECRET_KEY=station_3487_super_secret_key_prod_x92
+      - SECRET_KEY=${SECRET_KEY}
       - UPLOAD_FOLDER=/var/uploads
-      - DATABASE_URL=mysql+pymysql://ctfd:ctfd_db_pass_3487@db/ctfd
+      - DATABASE_URL=mysql+pymysql://${DB_USER}:${DB_PASSWORD}@db/${DB_DATABASE}
       - REDIS_URL=redis://cache:6379
-      - WORKERS=1
+      - WORKERS=2
       - LOG_FOLDER=/var/log/CTFd
       - ACCESS_LOG=-
       - ERROR_LOG=-
@@ -18,6 +19,8 @@ services:
     volumes:
       - .data/CTFd/logs:/var/log/CTFd
       - .data/CTFd/uploads:/var/uploads
+      - ./themes:/opt/CTFd/CTFd/themes:ro
+      - ./plugins:/opt/CTFd/CTFd/plugins:ro
     depends_on:
       - db
       - cache
@@ -29,10 +32,10 @@ services:
     image: mariadb:10.11
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=root_secure_pass_3487
-      - MYSQL_USER=ctfd
-      - MYSQL_PASSWORD=ctfd_db_pass_3487
-      - MYSQL_DATABASE=ctfd
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
     volumes:
       - .data/mysql:/var/lib/mysql
     networks:
