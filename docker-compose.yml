@@ -49,7 +49,26 @@ services:
     networks:
       internal:
 
+  # --- SIGNAL-05 PWN CHALLENGE SERVICE ---
+  challenge-signal05:
+    build:
+      context: ./challenges/signal-05-pwn
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "9005:9005"
+    networks:
+      - default
+    # Kaynak kısıtlaması (DDoS ve DoS engeli)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 128M
+
 networks:
   default:
   internal:
     internal: true
+
+  

