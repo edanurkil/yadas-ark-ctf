@@ -1,6 +1,6 @@
 # yadas-ark-ctf
 
-# 🛸 PROJECT: YADA'S ARK // EMERGENCY RECOVERY PROTOCOL (3487)
+#  PROJECT: YADA'S ARK // EMERGENCY RECOVERY PROTOCOL (3487)
 
 > **[ CLASSIFIED TRANSMISSION // SECTOR-9 ]**  
 > Yıl 3487. Yerküre üzerindeki biyosfer filtreleri çöktü ve türlerin ezici çoğunluğu yok oldu. Hayatta kalmayı başaran son bal arısı kolonisi derin dondurucu bir biyokapsülde kurtarılmayı bekliyor. Kalan yaşamsal potansiyeli yeni bir yıldıza taşıyacak tek araç olan **Yada's Ark**, manyetik fırtınalar sonrası derin uyku moduna geçti.  
@@ -9,7 +9,7 @@
 
 ---
 
-## 🗺️ Görev & İstasyon Haritası (Linear Progression)
+##  Görev & İstasyon Haritası (Linear Progression)
 
 Sistem çizgisel (linear quest) mantığıyla kurgulanmıştır. Her istasyonun bayrağı (`FLAG`), bir sonraki sistemin kapısını açar:
 
@@ -25,7 +25,7 @@ Sistem çizgisel (linear quest) mantığıyla kurgulanmıştır. Her istasyonun 
 
 ---
 
-## 🚀 Yerel Kurulum (CTFd ile Yayına Alma)
+##  Yerel Kurulum (CTFd ile Yayına Alma)
 
 Bu platform Docker ve Docker Compose ile saniyeler içinde çalıştırılabilir:
 
@@ -35,8 +35,8 @@ Bu platform Docker ve Docker Compose ile saniyeler içinde çalıştırılabilir
 ### Başlatma
 ```bash
 # Depoyu klonlayın
-git clone [https://github.com/](https://github.com/)<KULLANICI_ADINIZ>/<REPO_ADINIZ>.git
-cd <REPO_ADINIZ>
+git clone [https://github.com/](https://github.com/)<edanurkil>/<yadas-ark-ctf>.git
+cd <yadas-ark-ctf>
 
 # Servisleri ayağa kaldırın
 docker compose up -d
