@@ -1,0 +1,13 @@
+# Veritabanı ve Redis verileri
+.data/
+*.log
+
+# Python derleme artıkları
+__pycache__/
+*.pyc
+
+# İşletim sistemi ve editör dosyaları
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
